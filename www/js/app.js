@@ -1,11 +1,6 @@
-// Ionic Starter App
+angular.module('mobile-chat', ['ionic', 'mobile-chat-controllers', 'mobile-chat-services'])
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic'])
-
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $state) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -15,5 +10,15 @@ angular.module('starter', ['ionic'])
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+
+    $state.go('home');
   });
 })
+
+.config(['$stateProvider', function($stateProvider) {
+  $stateProvider.state('home', {
+    url: '/home',
+    controller: 'HomeController',
+    templateUrl: 'views/home.html'
+  });
+}]);
