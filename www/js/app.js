@@ -1,4 +1,11 @@
-angular.module('mobile-chat', ['ionic', 'mobile-chat-controllers', 'mobile-chat-services'])
+angular.module('mobile-chat',
+  [
+    'ionic',
+    'mobile-chat-controllers',
+    'mobile-chat-services',
+    'mobile-chat-directives',
+    'mobile-chat-factories'
+  ])
 
 .run(function($ionicPlatform, $state) {
   $ionicPlatform.ready(function() {
