@@ -8,19 +8,14 @@ angular.module('mobile-chat-directives', [])
     restrict: 'AE',
     link: function(scope, element, attributes) {
       scope.takePhoto = function() {
-        Camera.takePhoto().then(function(file) {
-          var fileReader = new FileReader();
-
-          fileReader.onload = function(event) {
-            var data = {
-              image: event.target.result,
-              sender: USER.name
-            };
-
-            $rootScope.$broadcast('event:photo:taken', data);
+        Camera.takePhoto().then(function(imageData) {
+          var dataUrl = 'data:image/jpeg;base64,' + imageData;
+          var data = {
+            image: dataUrl,
+            sender: USER.name
           };
 
-          fileReader.readAsDataURL(file);
+          $rootScope.$broadcast('event:photo:taken', data);
         });
       };
     },

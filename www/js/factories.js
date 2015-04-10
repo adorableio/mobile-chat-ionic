@@ -4,7 +4,7 @@ angular.module('mobile-chat-factories', [])
   return {
     takePhoto: function() {
       var options = {
-        destinationType: navigator.camera.DestinationType.FILE_URI,
+        destinationType: navigator.camera.DestinationType.DATA_URL,
         quality: 75,
         targetWidth: 320,
         targetHeight: 320,
