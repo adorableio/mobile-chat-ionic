@@ -6,4 +6,8 @@ angular.module('mobile-chat-controllers', [])
     USER.name = $scope.user.name;
     $state.go('chat');
   }
+}])
+
+.controller('ChatController', ['$scope', function($scope) {
+
 }]);

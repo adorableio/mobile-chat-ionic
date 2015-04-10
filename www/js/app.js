@@ -16,9 +16,16 @@ angular.module('mobile-chat', ['ionic', 'mobile-chat-controllers', 'mobile-chat-
 })
 
 .config(['$stateProvider', function($stateProvider) {
-  $stateProvider.state('home', {
-    url: '/home',
-    controller: 'HomeController',
-    templateUrl: 'views/home.html'
-  });
+  $stateProvider
+    .state('home', {
+      url: '/home',
+      controller: 'HomeController',
+      templateUrl: 'views/home.html'
+    })
+
+    .state('chat', {
+      url:'/chat',
+      controller:'ChatController',
+      templateUrl:'views/chat.html'
+    });
 }]);
