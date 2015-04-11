@@ -21,4 +21,31 @@ angular.module('mobile-chat-directives', [])
     },
     templateUrl: 'views/camera.html'
   }
+}])
+
+.directive('chatList', ['$rootScope', 'SOCKET_URL', function($rootScope, SOCKET_URL) {
+  return {
+    replace: true,
+    restrict: 'AE',
+    scope:{
+    },
+    link: function(scope, element, attributes) {
+      var socket = io(SOCKET_URL);
+
+      scope.messages = [];
+
+      socket.on('event:incoming:image', function(data) {
+        scope.$apply(function() {
+          scope.messages.unshift(data);
+        });
+      });
+
+      $rootScope.$on('event:photo:taken', function(event, data) {
+        socket.emit('event:new:image', data);
+
+        scope.messages.unshift(data);
+      });
+    },
+    templateUrl:'views/chat-list.html'
+  }
 }]);
